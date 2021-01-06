@@ -1,6 +1,5 @@
-server:
-  port: 8082
-
+#server:
+#  port: 8080
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/payment
@@ -40,12 +39,12 @@ spring:
           contentType: application/*+avro
           group: ${spring.application.name}
           consumer:
-            use-native-decoding: true
+            use-native-encoding: true
         payment-paid-output:
           destination: streaming.ecommerce.payment.paid
           contentType: application/*+avro
           producer:
-            use-native-encoding: true
+            use-native-decoding: true
   kafka:
     properties:
       schema:
