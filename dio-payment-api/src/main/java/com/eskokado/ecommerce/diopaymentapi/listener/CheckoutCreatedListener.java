@@ -6,6 +6,7 @@ import com.eskokado.ecommerce.diopaymentapi.event.PaymentCreatedEvent;
 import com.eskokado.ecommerce.diopaymentapi.streaming.CheckoutProcessor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
@@ -18,13 +19,13 @@ public class CheckoutCreatedListener {
     private final CheckoutProcessor checkoutProcessor;
 
     @StreamListener(CheckoutProcessor.INPUT)
-    public void handler(CheckoutCreatedEvent event) {
+    public void handler(Message<?> message) {
         // Processa Pagamento gateway
         // Salvar os dados de pagamento
         // Enviar o evento de pagamento processado
         final PaymentCreatedEvent paymentCreatedEvent = PaymentCreatedEvent.newBuilder()
-                .setCheckoutCode(event.getCheckoutCode())
-                .setCheckoutStatus((event.getStatus() == null) ? "nulo" : event.getStatus())
+//                .setCheckoutCode(event.getCheckoutCode())
+//                .setCheckoutStatus((event.getStatus() == null) ? "nulo" : event.getStatus())
                 .setPaymentCode(UUID.randomUUID().toString())
                 .build();
 
