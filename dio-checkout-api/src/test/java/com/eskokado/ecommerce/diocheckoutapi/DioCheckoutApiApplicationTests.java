@@ -1,13 +1,10 @@
 package com.eskokado.ecommerce.diocheckoutapi;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
-@SpringBootTest
+@RunWith(Cucumber.class)
+@CucumberOptions(plugin = {"pretty", "json:build/cucumber-api-report.json"}, features = "classpath:feature")
 class DioCheckoutApiApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
 }
