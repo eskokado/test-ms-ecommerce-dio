@@ -1,5 +1,6 @@
 package com.eskokado.ecommerce.diocheckoutapi;
 
+import com.eskokado.ecommerce.diocheckoutapi.setup.PostgreSQLSetup;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
@@ -9,7 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 @CucumberContextConfiguration
 @SpringBootTest(classes = {
         DioCheckoutApiApplication.class,
-//        PostgreSQLSetup.class
+        PostgreSQLSetup.class
 }, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWireMock(port = 8888)
 public class SpringIntegrationTest {
